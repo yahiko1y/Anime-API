@@ -10,42 +10,35 @@ function getAnime(e){
 console.clear()
 output.innerHTML=''
 
-    fetch(search+input.value)
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+  }
+
+    fetch(url+1)
     .then((res)=>res.json())
     .then(anime=>
         {
             console.log(anime)
-            document.querySelector('.found').innerText=anime.results.length
-            anime.results.forEach(myFunction)
+           myFunction(anime)
             function myFunction(res,index)
                 {
+                    console.log("i have been here")
                     const div=document.createElement('div')
                     const synopsis=document.createElement('p')
                     const title=document.createElement('h3')
                     const img=document.createElement('img')
                     div.setAttribute('class','box')
                     div.appendChild(title)
-                    div.appendChild(synopsis)
                     div.appendChild(img)
+                    div.appendChild(synopsis)
+                   
                     title.innerHTML=res.title
+                    synopsis.innerHTML=res.synopsis
                     
                     img.setAttribute('src',res.image_url)
                     output.appendChild(div)
-                    fetch(url+res.mal_id)
-                        .then((r)=>r.json())
-                        .then(a=>
-                            {
-                                synopsis.innerHTML=a.synopsis
-                                console.log(a)
-                            })
-                        .catch()
-                }
-
-
-            //side project
-            console.log(anime.results[0].mal_id)
-            
-          
+                    
+                }    
     })
     .catch(err=>{
         console.log(err)

@@ -20,7 +20,11 @@
     cursor: pointer;
   }
   .box{
-    border: #45a049;
-    box-shadow: 3px;
+    border: #45a049 solid 1px;
+    background-color: #ccc;
+    font-weight: bold;
+    font-family: sans-serif;
+    text-align: center;
+    width: 40%;
   }
   
